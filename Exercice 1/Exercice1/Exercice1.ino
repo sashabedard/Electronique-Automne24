@@ -1,259 +1,114 @@
-// DISPLAY
-const int pinA = 4;
-const int pinB = 5;
-const int pinC = 6;
-const int pinD = 7;
-const int pinE = 8;
-const int pinF = 9;
-const int pinG = 10;
-const int pinDP = 11;
-
+// DISPLAY 
+const int pins[] = {4, 5, 6, 7, 8, 9, 10, 11};  // Array des numéros de pin pour chaque lumiere de display
+enum {A, B, C, D, E, F, G, DP};  // referencement 
 
 void setup() {
-  Serial.begin(9600);
-  // put your setup code here, to run once:
-  pinMode(pinA, OUTPUT);
-  pinMode(pinB, OUTPUT);
-  pinMode(pinC, OUTPUT);
-  pinMode(pinD, OUTPUT);
-  pinMode(pinE, OUTPUT);
-  pinMode(pinF, OUTPUT);
-  pinMode(pinG, OUTPUT);
-  pinMode(pinDP, OUTPUT);
+  Serial.begin(9600);  // init
+  for (int i = 0; i < 8; i++) {  // init setup des leds
+    pinMode(pins[i], OUTPUT);  
+  }
 }
 
 void loop() {
-  masterSeq();
+  showSequence();
 }
 
+// power off tous les segments du display
 void lightReset() {
-  digitalWrite(pinA, 0);
-  digitalWrite(pinB, 0);
-  digitalWrite(pinC, 0);
-  digitalWrite(pinD, 0);
-  digitalWrite(pinE, 0);
-  digitalWrite(pinF, 0);
-  digitalWrite(pinG, 0);
+  for (int i = 0; i < 8; i++) {  
+    digitalWrite(pins[i], 0);  // power off chaque segment
+  }
 }
 
-void startSequence() {
-  digitalWrite(pinA, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinE, 1);
-  digitalWrite(pinF, 1);
-  digitalWrite(pinG, 1);
+
+ void displayNumber(bool segments[7]) { // il y a 7 segments de led a show ou unshow
+  lightReset();
+  for (int i = 0; i < 7; i++) {  
+    digitalWrite(pins[i], segments[i]);  // active ou désactive chaque segment selon le pattern du chiffre
+  }
 }
+
+// Afficher les chiffres
+void sequence(int num) {
+  bool segments[10][7] = {   // [10] -- 10 arrays, [7] -- 7 segments a power on
+    {1, 1, 1, 1, 1, 1, 0},  // 0
+    {0, 1, 1, 0, 0, 0, 0},  // 1
+    {1, 1, 0, 1, 1, 0, 1},  // 2
+    {1, 1, 1, 1, 0, 0, 1},  // 3
+    {0, 1, 1, 0, 0, 1, 1},  // 4
+    {1, 0, 1, 1, 0, 1, 1},  // 5
+    {1, 0, 1, 1, 1, 1, 1},  // 6
+    {1, 1, 1, 0, 0, 0, 0},  // 7
+    {1, 1, 1, 1, 1, 1, 1},  // 8
+    {1, 1, 1, 1, 0, 1, 1}   // 9
+  };
+  
+  displayNumber(segments[num]);
+  delay(1000);
+  lightReset();
+}
+
 
 void showSequence() {
-  sequence1();
-  delay(1000);
-  lightReset();
-
-  sequence2();
-  delay(1000);
-  lightReset();
-
-  sequence3();
-  delay(1000);
-  lightReset();
-
-  sequence4();
-  delay(1000);
-  lightReset();
-
-  sequence5();
-  delay(1000);
-  lightReset();
-
-  sequence6();
-  delay(1000);
-  lightReset();
-
-  sequence7();
-  delay(1000);
-  lightReset();
-
-  sequence8();
-  delay(1000);
-  lightReset();
-
-  sequence9();
-  delay(1000);
-  lightReset();
-
-  sequence0();
-  delay(1000);
-  lightReset();
-
-  sequenceBonusMaster();
-  sequenceBonusMaster();
-  sequenceBonusMaster();
-  sequenceBonusMaster();
-  sequenceBonusMaster();
+  for (int i = 0; i <= 9; i++) {
+    sequence(i);
+  }
+  
+  for (int i = 0; i < 5; i++) {
+    sequenceBonusMaster();
+  }
   Serial.println("loop done");
 }
 
-
+// BONUS
 void sequenceBonusMaster() {
   sequenceBonus();
-  delay(100);
+  delay(100); 
   sequenceBonusDeux();
   delay(100);
   sequenceBonusTrois();
+  delay(100); 
+  seqBonusQuattre(); 
   delay(100);
-  sequenceBonusQuattre();
+  seqBonusCinq();
   delay(100);
-  sequenceBonusCinq();
-  delay(100);
-  sequenceBonusSix();
-}
-
-void sequence1() {
-  lightReset();
-  digitalWrite(pinB, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinA, 0);
-  digitalWrite(pinF, 0);
-  digitalWrite(pinG, 0);
-  digitalWrite(pinE, 0);
-  digitalWrite(pinD, 0);
-  delay(1000);
-}
-
-void sequence2() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinG, 1);
-  digitalWrite(pinE, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinF, 0);
-  digitalWrite(pinC, 0);
-}
-
-void sequence3() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinG, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinF, 0);
-  digitalWrite(pinE, 0);
-}
-
-void sequence4() {
-  lightReset();
-  digitalWrite(pinF, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinG, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinA, 0);
-  digitalWrite(pinE, 0);
-  digitalWrite(pinD, 0);
-}
-
-void sequence5() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinF, 1);
-  digitalWrite(pinG, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinB, 0);
-  digitalWrite(pinE, 0);
-}
-
-void sequence6() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinF, 1);
-  digitalWrite(pinG, 1);
-  digitalWrite(pinE, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinB, 0);
-}
-
-void sequence7() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinF, 0);
-  digitalWrite(pinG, 0);
-  digitalWrite(pinE, 0);
-  digitalWrite(pinD, 0);
-}
-
-void sequence8() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinC, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinE, 1);
-  digitalWrite(pinF, 1);
-  digitalWrite(pinG, 1);
-}
-
-void sequence9() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinF, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinG, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinC, 1);
-}
-
-void sequence0() {
-  lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinF, 1);
-  digitalWrite(pinB, 1);
-  digitalWrite(pinE, 1);
-  digitalWrite(pinD, 1);
-  digitalWrite(pinC, 1);
+  seqBonusSix(); 
 }
 
 void sequenceBonus() {
   lightReset();
-  digitalWrite(pinA, 1);
-  digitalWrite(pinD, 1);
+  digitalWrite(pins[A], 1); 
+  digitalWrite(pins[D], 1); 
 }
 
 void sequenceBonusDeux() {
   lightReset();
-  digitalWrite(pinF, 1);
-  digitalWrite(pinC, 1);
+  digitalWrite(pins[F], 1);
+  digitalWrite(pins[C], 1);
 }
 
 void sequenceBonusTrois() {
   lightReset();
-  digitalWrite(pinB, 1);
-  digitalWrite(pinE, 1);
+  digitalWrite(pins[B], 1);
+  digitalWrite(pins[E], 1);
 }
 
-void sequenceBonusQuattre() {
+
+
+void seqBonusQuattre() {
   lightReset();
-  digitalWrite(pinG, 1);
+  digitalWrite(pins[G], 1);
 }
 
-void sequenceBonusCinq() {
+void seqBonusCinq() {
   lightReset();
-  digitalWrite(pinA, 1);
+  digitalWrite(pins[A], 1);
 }
 
-void sequenceBonusSix() {
+void seqBonusSix() {
   lightReset();
-  digitalWrite(pinD, 1);
+  digitalWrite(pins[D], 1);
 }
 
-void masterSeq() {
-  showSequence();
-  Serial.println("step7");
-  delay(1000);
-}
+
+
