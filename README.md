@@ -13,9 +13,10 @@
 - [x] Styler le hero Units
 - [x] Paiements (client?)
 - [x] shipping zones à valider
+- [x] Créer Produit : Sanuvair (possède des variations) [^3]
 - [ ] Email de contact ADMIN [^8]
 - [ ] icone parts css
-- [ ] Créer Produit : Sanuvair (possède des variations) [^3]
+
 
 
 <br>
@@ -24,8 +25,8 @@
 - [x] Styler le hero Parts
 - [x] Styler le hero Units
 - [x] Paiements (client?)
+- [x] Créer Produit : Sanuvair (possède des variations) [^4]
 - [ ] Email de contact ADMIN [^8]
-- [ ] Créer Produit : Sanuvair (possède des variations) [^4]
 
 <br>
 <br>
