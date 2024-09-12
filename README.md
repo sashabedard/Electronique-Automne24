@@ -23,7 +23,7 @@
 **[.CA](express.sanuvox.ca)**
 - [x] Styler le hero Parts
 - [x] Styler le hero Units
-- [ ] Paiements (client?)
+- [x] Paiements (client?)
 - [ ] Email de contact ADMIN [^8]
 - [ ] Créer Produit : Sanuvair (possède des variations) [^4]
 
