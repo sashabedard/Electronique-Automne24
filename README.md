@@ -4,16 +4,6 @@
 <br>
 <br>
 
-Ici se trouve la liste des choses à compléter sur les sites express.sanuvox.ca et express.sanuvox.com
-
-<br>
-<br>
-<br>
-
-**[Quick Link : Plan de test.](#tasks)**
-
-<br>
-
 **[.COM](express.sanuvox.com)**
 - [ ] Modifier ToS page [^1]
 - [ ] Modifier Privacy Policy page [^2]
@@ -47,6 +37,7 @@ Ici se trouve la liste des choses à compléter sur les sites express.sanuvox.ca
 - :no_entry: Réimporter des produits [^6]
 - :no_entry: Voler les clés de licences 
 <br>
+
 - :white_check_mark: Avoir du fun [^7]
 - :white_check_mark: You break :fast_forward: You fix
 
@@ -54,19 +45,14 @@ Ici se trouve la liste des choses à compléter sur les sites express.sanuvox.ca
 <br>
 <br>
 
-# Plan de test{#tasks}
+# Plan de test
 
 
-- [ ] "ShopFlow": "Tester les différents filtres",
-<br>
+- [ ] "ShopFlow": "Tester les différents filtres",>
 - [ ] "CartFlow": "Ajouter, modifier, enlever des produits du panier",
-<br>
 - [ ] "ShippingZones": "S'assurer que tu peux passer une commande, valider le freeshipping à partir de 4999,99$",
-<br>
 - [ ] "Unités": "Ajouter des unités au panier via la page d'unités, de pièce et via le panier (doit déjà avoir le produit au panier)",
-<br>
 - [ ] "Pièces": "Ajouter des unités au panier via la page d'unités, de pièce et via le panier (doit déjà avoir le produit au panier)",
-<br>
 - [ ] "Contact": "Envoyer un formulaire de contact via la page Contact"
 
 
