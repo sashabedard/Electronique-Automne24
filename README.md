@@ -5,27 +5,27 @@
 <br>
 
 **[.COM](express.sanuvox.com)**
-- [ ] Modifier ToS page [^1]
-- [ ] Modifier Privacy Policy page [^2]
-- [ ] Créer Produit : Sanuvair (possède des variations) [^3]
+- [x] Modifier ToS page [^1]
+- [x] Modifier Privacy Policy page [^2]
 - [x] Créer le hero Units 
 - [x] Créer le hero Parts
 - [x] Styler le hero Parts
 - [x] Styler le hero Units
-- [ ] Paiements (client?)
+- [x] Paiements (client?)
+- [x] shipping zones à valider
 - [ ] Email de contact ADMIN [^8]
 - [ ] icone parts css
-- [x] shipping zones à valider
+- [ ] Créer Produit : Sanuvair (possède des variations) [^3]
 
 
 <br>
 
 **[.CA](express.sanuvox.ca)**
-- [ ] Créer Produit : Sanuvair (possède des variations) [^4]
 - [x] Styler le hero Parts
 - [x] Styler le hero Units
 - [ ] Paiements (client?)
 - [ ] Email de contact ADMIN [^8]
+- [ ] Créer Produit : Sanuvair (possède des variations) [^4]
 
 <br>
 <br>
